@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
-import { RiMenuLine, RiCloseLine, RiBriefcaseLine } from "react-icons/ri";
+import { NavLink, Link } from "react-router-dom";
+import { RiMenuLine, RiCloseLine, RiLeafLine } from "react-icons/ri";
 
 const links = [
   { to: "/", label: "Home" },
@@ -12,46 +12,60 @@ const links = [
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
-  const navLinkClass = ({ isActive }) =>
-    `text-sm font-medium tracking-widest uppercase transition-colors duration-200 ${
-      isActive ? "text-amber-400" : "text-zinc-400 hover:text-white"
-    }`;
-
   return (
-    <header className="sticky top-0 z-50 bg-zinc-950/90 backdrop-blur-md border-b border-zinc-800">
+    <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-green-100 shadow-sm">
       <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <NavLink to="/" className="flex items-center gap-2 text-amber-400">
-          <RiBriefcaseLine size={26} />
-          <span className="text-xl font-black tracking-tight text-white">
-            business<span className="text-amber-400">-site</span>
+        <Link to="/" className="flex items-center gap-2">
+          <div className="w-9 h-9 bg-green-500 rounded-xl flex items-center justify-center">
+            <RiLeafLine size={20} className="text-white" />
+          </div>
+          <span
+            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="text-xl font-black text-gray-900"
+          >
+            business<span className="text-green-500">-site</span>
           </span>
-        </NavLink>
+        </Link>
 
         {/* Desktop Links */}
-        <ul className="hidden md:flex items-center gap-10">
-          {links.map((l) => (
-            <li key={l.to}>
-              <NavLink to={l.to} className={navLinkClass} end={l.to === "/"}>
-                {l.label}
-              </NavLink>
-            </li>
-          ))}
+        <ul className="hidden md:flex items-center gap-8">
+          {links.map(function (l) {
+            return (
+              <li key={l.to}>
+                <NavLink
+                  to={l.to}
+                  end={l.to === "/"}
+                  className={function (p) {
+                    return (
+                      "text-sm font-medium transition-colors duration-200 " +
+                      (p.isActive
+                        ? "text-green-600 font-semibold"
+                        : "text-gray-600 hover:text-green-600")
+                    );
+                  }}
+                >
+                  {l.label}
+                </NavLink>
+              </li>
+            );
+          })}
         </ul>
 
-        {/* Desktop CTA */}
-        <NavLink
+        {/* CTA */}
+        <Link
           to="/contact"
-          className="hidden md:inline-flex items-center gap-2 bg-amber-400 text-zinc-950 text-sm font-bold px-5 py-2.5 rounded-full hover:bg-amber-300 transition-colors duration-200"
+          className="hidden md:inline-flex items-center gap-2 bg-green-500 text-white text-sm font-semibold px-6 py-2.5 rounded-full hover:bg-green-600 transition-colors duration-200 shadow-md shadow-green-200"
         >
           Get Started
-        </NavLink>
+        </Link>
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden text-white"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
+          className="md:hidden text-gray-700"
+          onClick={function () {
+            setOpen(!open);
+          }}
         >
           {open ? <RiCloseLine size={26} /> : <RiMenuLine size={26} />}
         </button>
@@ -59,25 +73,38 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="md:hidden bg-zinc-900 border-t border-zinc-800 px-6 py-6 flex flex-col gap-5">
-          {links.map((l) => (
-            <NavLink
-              key={l.to}
-              to={l.to}
-              end={l.to === "/"}
-              className={navLinkClass}
-              onClick={() => setOpen(false)}
-            >
-              {l.label}
-            </NavLink>
-          ))}
-          <NavLink
+        <div className="md:hidden bg-white border-t border-green-100 px-6 py-6 flex flex-col gap-5 shadow-lg">
+          {links.map(function (l) {
+            return (
+              <NavLink
+                key={l.to}
+                to={l.to}
+                end={l.to === "/"}
+                onClick={function () {
+                  setOpen(false);
+                }}
+                className={function (p) {
+                  return (
+                    "text-sm font-medium " +
+                    (p.isActive
+                      ? "text-green-600 font-semibold"
+                      : "text-gray-600")
+                  );
+                }}
+              >
+                {l.label}
+              </NavLink>
+            );
+          })}
+          <Link
             to="/contact"
-            onClick={() => setOpen(false)}
-            className="mt-2 bg-amber-400 text-zinc-950 text-sm font-bold px-5 py-2.5 rounded-full text-center hover:bg-amber-300 transition-colors duration-200"
+            onClick={function () {
+              setOpen(false);
+            }}
+            className="bg-green-500 text-white text-sm font-semibold px-6 py-3 rounded-full text-center hover:bg-green-600 transition-colors"
           >
             Get Started
-          </NavLink>
+          </Link>
         </div>
       )}
     </header>
