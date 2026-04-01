@@ -12,7 +12,10 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
-      <div className="flex flex-col min-h-screen bg-zinc-950 text-white font-sans">
+      <div
+        style={{ fontFamily: "'DM Sans', sans-serif" }}
+        className="flex flex-col min-h-screen bg-white text-gray-800"
+      >
         <Navbar />
         <main className="flex-1">
           <Routes>
