@@ -1,4 +1,5 @@
-import { RiCheckboxCircleLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
+import { RiCheckboxCircleLine, RiArrowRightLine } from "react-icons/ri";
 
 const values = [
   "Client-first approach in every project",
@@ -10,96 +11,185 @@ const values = [
 ];
 
 const team = [
-  { name: "Alex Turner", role: "CEO & Founder", bg: "bg-amber-400" },
-  { name: "Maria Chen", role: "Head of Design", bg: "bg-zinc-600" },
-  { name: "David Osei", role: "Lead Developer", bg: "bg-zinc-700" },
+  {
+    name: "Alex Turner",
+    role: "CEO & Founder",
+    img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=face",
+    bio: "Visionary leader with 15 years in digital business strategy.",
+  },
+  {
+    name: "Maria Chen",
+    role: "Head of Design",
+    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=face",
+    bio: "Award-winning designer passionate about user experience.",
+  },
+  {
+    name: "David Osei",
+    role: "Lead Developer",
+    img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&h=200&fit=crop&crop=face",
+    bio: "Full-stack engineer building scalable, modern web applications.",
+  },
+  {
+    name: "Nina Patel",
+    role: "Marketing Director",
+    img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=face",
+    bio: "Data-driven marketer helping brands reach their true potential.",
+  },
 ];
+
+function TeamCard(props) {
+  return (
+    <div className="bg-white rounded-2xl overflow-hidden border border-green-100 hover:shadow-lg hover:shadow-green-50 transition-all duration-300 group">
+      <div className="relative overflow-hidden">
+        <img
+          src={props.img}
+          alt={props.name}
+          className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-green-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </div>
+      <div className="p-6">
+        <div className="font-bold text-gray-900 text-lg">{props.name}</div>
+        <div className="text-green-600 text-sm font-medium mt-1 mb-3">
+          {props.role}
+        </div>
+        <p className="text-gray-500 text-sm leading-relaxed">{props.bio}</p>
+      </div>
+    </div>
+  );
+}
 
 export default function About() {
   return (
     <div>
       {/* Hero */}
-      <section className="bg-zinc-950 py-24 px-6 text-center border-b border-zinc-800">
-        <span className="inline-block bg-amber-400/10 text-amber-400 text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-6 border border-amber-400/20">
-          About Us
-        </span>
-        <h1 className="text-4xl md:text-6xl font-black mb-6">
-          We Are <span className="text-amber-400">business-site</span>
-        </h1>
-        <p className="text-zinc-400 max-w-2xl mx-auto text-lg leading-relaxed">
-          A passionate team of designers, developers, and strategists helping
-          businesses grow through smart digital solutions since 2012.
-        </p>
+      <section className="relative bg-gradient-to-br from-green-50 via-white to-emerald-50 py-24 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <span className="inline-block bg-green-100 text-green-700 text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
+            About Us
+          </span>
+          <h1
+            style={{ fontFamily: "'Playfair Display', serif" }}
+            className="text-5xl md:text-6xl font-black text-gray-900 mb-6"
+          >
+            We Are <span className="text-green-500">business-site</span>
+          </h1>
+          <p className="text-gray-500 text-lg leading-relaxed max-w-2xl mx-auto">
+            A passionate team of designers, developers, and strategists helping
+            businesses grow through smart digital solutions since 2012.
+          </p>
+        </div>
       </section>
 
       {/* Story */}
-      <section className="bg-zinc-900 py-24 px-6">
+      <section className="bg-white py-24 px-6">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+          <div className="relative">
+            <img
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=450&fit=crop"
+              alt="Our team collaborating"
+              className="rounded-3xl w-full object-cover shadow-xl shadow-green-100"
+            />
+            <div className="absolute -bottom-6 -right-6 bg-green-500 text-white rounded-2xl p-6 shadow-lg text-center">
+              <div
+                className="text-3xl font-black"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                500+
+              </div>
+              <div className="text-green-100 text-xs mt-1">Happy Clients</div>
+            </div>
+          </div>
+
           <div>
-            <h2 className="text-3xl md:text-4xl font-black mb-6">Our Story</h2>
-            <p className="text-zinc-400 leading-relaxed mb-4">
+            <span className="text-green-600 text-xs font-bold tracking-widest uppercase">
+              Our Story
+            </span>
+            <h2
+              style={{ fontFamily: "'Playfair Display', serif" }}
+              className="text-4xl font-black text-gray-900 mt-3 mb-5"
+            >
+              Built on Passion, Driven by Results
+            </h2>
+            <p className="text-gray-500 leading-relaxed mb-4">
               Founded in 2012, business-site started as a small web agency with
               big ambitions. Over a decade, we've grown into a full-service
               digital company trusted by startups and enterprises alike.
             </p>
-            <p className="text-zinc-400 leading-relaxed">
+            <p className="text-gray-500 leading-relaxed mb-8">
               We believe every business deserves a powerful digital presence.
               Our mission is to make that possible — affordably, beautifully,
               and effectively.
             </p>
-          </div>
-          <div className="bg-zinc-800 rounded-2xl border border-zinc-700 p-10 flex items-center justify-center">
-            <div className="text-center">
-              <div className="text-7xl font-black text-amber-400">12+</div>
-              <div className="text-zinc-300 mt-2 font-semibold">
-                Years of Excellence
-              </div>
-            </div>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 bg-green-500 text-white font-semibold px-7 py-3.5 rounded-full hover:bg-green-600 transition-colors shadow-md shadow-green-200"
+            >
+              Work With Us <RiArrowRightLine size={18} />
+            </Link>
           </div>
         </div>
       </section>
 
       {/* Values */}
-      <section className="bg-zinc-950 py-24 px-6">
+      <section className="bg-gray-50 py-24 px-6">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-black text-center mb-14">
-            Our Core Values
-          </h2>
-          <div className="grid md:grid-cols-2 gap-5">
-            {values.map((v) => (
-              <div
-                key={v}
-                className="flex items-start gap-4 bg-zinc-900 rounded-xl p-5 border border-zinc-800"
-              >
-                <RiCheckboxCircleLine
-                  size={22}
-                  className="text-amber-400 flex-shrink-0 mt-0.5"
-                />
-                <span className="text-zinc-300 text-sm">{v}</span>
-              </div>
-            ))}
+          <div className="text-center mb-14">
+            <span className="text-green-600 text-xs font-bold tracking-widest uppercase">
+              What We Stand For
+            </span>
+            <h2
+              style={{ fontFamily: "'Playfair Display', serif" }}
+              className="text-4xl font-black text-gray-900 mt-3"
+            >
+              Our Core Values
+            </h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-4">
+            {values.map(function (v) {
+              return (
+                <div
+                  key={v}
+                  className="flex items-start gap-4 bg-white rounded-xl p-5 border border-green-100 hover:border-green-300 transition-colors"
+                >
+                  <RiCheckboxCircleLine
+                    size={22}
+                    className="text-green-500 flex-shrink-0 mt-0.5"
+                  />
+                  <span className="text-gray-700 text-sm font-medium">{v}</span>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* Team */}
-      <section className="bg-zinc-900 py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-black text-center mb-14">
-            Meet The Team
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-            {team.map((m) => (
-              <div key={m.name} className="text-center">
-                <div
-                  className={`w-24 h-24 rounded-full mx-auto mb-4 ${m.bg} flex items-center justify-center text-3xl font-black text-white`}
-                >
-                  {m.name[0]}
-                </div>
-                <div className="font-bold text-white">{m.name}</div>
-                <div className="text-amber-400 text-sm mt-1">{m.role}</div>
-              </div>
-            ))}
+      <section className="bg-white py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <span className="text-green-600 text-xs font-bold tracking-widest uppercase">
+              The People
+            </span>
+            <h2
+              style={{ fontFamily: "'Playfair Display', serif" }}
+              className="text-4xl font-black text-gray-900 mt-3"
+            >
+              Meet Our Team
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {team.map(function (m) {
+              return (
+                <TeamCard
+                  key={m.name}
+                  img={m.img}
+                  name={m.name}
+                  role={m.role}
+                  bio={m.bio}
+                />
+              );
+            })}
           </div>
         </div>
       </section>
