@@ -16,7 +16,10 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-green-100 shadow-sm">
       <nav className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2">
+        <Link
+          to="https://business-site-mu-sage.vercel.app/"
+          className="flex items-center gap-2"
+        >
           <div className="w-9 h-9 bg-green-500 rounded-xl flex items-center justify-center">
             <RiLeafLine size={20} className="text-white" />
           </div>
