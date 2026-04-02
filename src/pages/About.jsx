@@ -14,46 +14,45 @@ const team = [
   {
     name: "Alex Turner",
     role: "CEO & Founder",
-    img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=face",
+    img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=face",
     bio: "Visionary leader with 15 years in digital business strategy.",
   },
   {
     name: "Maria Chen",
     role: "Head of Design",
-    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=face",
+    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
     bio: "Award-winning designer passionate about user experience.",
   },
   {
     name: "David Osei",
     role: "Lead Developer",
-    img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=200&h=200&fit=crop&crop=face",
+    img: "https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=400&h=400&fit=crop&crop=face",
     bio: "Full-stack engineer building scalable, modern web applications.",
   },
   {
     name: "Nina Patel",
     role: "Marketing Director",
-    img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=face",
+    img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
     bio: "Data-driven marketer helping brands reach their true potential.",
   },
 ];
 
-function TeamCard(props) {
+function TeamCard({ img, name, role, bio }) {
   return (
-    <div className="bg-white rounded-2xl overflow-hidden border border-green-100 hover:shadow-lg hover:shadow-green-50 transition-all duration-300 group">
-      <div className="relative overflow-hidden">
+    <div className="bg-white rounded-2xl overflow-hidden border border-green-100 hover:shadow-xl hover:shadow-green-50 transition-all duration-300 group">
+      <div className="overflow-hidden">
         <img
-          src={props.img}
-          alt={props.name}
+          src={img}
+          alt={name}
           className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-green-900/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </div>
       <div className="p-6">
-        <div className="font-bold text-gray-900 text-lg">{props.name}</div>
+        <div className="font-bold text-gray-900 text-lg">{name}</div>
         <div className="text-green-600 text-sm font-medium mt-1 mb-3">
-          {props.role}
+          {role}
         </div>
-        <p className="text-gray-500 text-sm leading-relaxed">{props.bio}</p>
+        <p className="text-gray-500 text-sm leading-relaxed">{bio}</p>
       </div>
     </div>
   );
@@ -62,33 +61,34 @@ function TeamCard(props) {
 export default function About() {
   return (
     <div>
-      {/* Hero */}
-      <section className="relative bg-gradient-to-br from-green-50 via-white to-emerald-50 py-24 px-6">
-        <div className="max-w-4xl mx-auto text-center">
+      {/* Hero - 100vh */}
+      <section className="relative bg-gradient-to-br from-green-50 via-white to-emerald-50 min-h-screen flex items-center px-6">
+        <div className="max-w-4xl mx-auto text-center w-full">
           <span className="inline-block bg-green-100 text-green-700 text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
             About Us
           </span>
           <h1
             style={{ fontFamily: "'Playfair Display', serif" }}
-            className="text-5xl md:text-6xl font-black text-gray-900 mb-6"
+            className="text-5xl md:text-7xl font-black text-gray-900 mb-6"
           >
             We Are <span className="text-green-500">business-site</span>
           </h1>
-          <p className="text-gray-500 text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="text-gray-500 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto">
             A passionate team of designers, developers, and strategists helping
             businesses grow through smart digital solutions since 2012.
           </p>
         </div>
       </section>
 
-      {/* Story */}
-      <section className="bg-white py-24 px-6">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      {/* Story - 100vh */}
+      <section className="bg-white min-h-screen flex items-center px-6 py-20 md:py-0">
+        <div className="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-16 items-center">
           <div className="relative">
             <img
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&h=450&fit=crop"
+              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&h=600&fit=crop"
               alt="Our team collaborating"
               className="rounded-3xl w-full object-cover shadow-xl shadow-green-100"
+              style={{ height: "520px" }}
             />
             <div className="absolute -bottom-6 -right-6 bg-green-500 text-white rounded-2xl p-6 shadow-lg text-center">
               <div
@@ -100,14 +100,13 @@ export default function About() {
               <div className="text-green-100 text-xs mt-1">Happy Clients</div>
             </div>
           </div>
-
           <div>
             <span className="text-green-600 text-xs font-bold tracking-widest uppercase">
               Our Story
             </span>
             <h2
               style={{ fontFamily: "'Playfair Display', serif" }}
-              className="text-4xl font-black text-gray-900 mt-3 mb-5"
+              className="text-4xl md:text-5xl font-black text-gray-900 mt-3 mb-5"
             >
               Built on Passion, Driven by Results
             </h2>
@@ -131,16 +130,16 @@ export default function About() {
         </div>
       </section>
 
-      {/* Values */}
-      <section className="bg-gray-50 py-24 px-6">
-        <div className="max-w-5xl mx-auto">
+      {/* Values - 100vh */}
+      <section className="bg-gray-50 min-h-screen flex items-center px-6 py-20 md:py-0">
+        <div className="max-w-5xl mx-auto w-full">
           <div className="text-center mb-14">
             <span className="text-green-600 text-xs font-bold tracking-widest uppercase">
               What We Stand For
             </span>
             <h2
               style={{ fontFamily: "'Playfair Display', serif" }}
-              className="text-4xl font-black text-gray-900 mt-3"
+              className="text-4xl md:text-5xl font-black text-gray-900 mt-3"
             >
               Our Core Values
             </h2>
@@ -150,13 +149,15 @@ export default function About() {
               return (
                 <div
                   key={v}
-                  className="flex items-start gap-4 bg-white rounded-xl p-5 border border-green-100 hover:border-green-300 transition-colors"
+                  className="flex items-start gap-4 bg-white rounded-xl p-6 border border-green-100 hover:border-green-300 transition-colors"
                 >
                   <RiCheckboxCircleLine
                     size={22}
                     className="text-green-500 flex-shrink-0 mt-0.5"
                   />
-                  <span className="text-gray-700 text-sm font-medium">{v}</span>
+                  <span className="text-gray-700 text-sm font-medium leading-relaxed">
+                    {v}
+                  </span>
                 </div>
               );
             })}
@@ -164,16 +165,16 @@ export default function About() {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="bg-white py-24 px-6">
-        <div className="max-w-6xl mx-auto">
+      {/* Team - 100vh */}
+      <section className="bg-white min-h-screen flex items-center px-6 py-20 md:py-0">
+        <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-14">
             <span className="text-green-600 text-xs font-bold tracking-widest uppercase">
               The People
             </span>
             <h2
               style={{ fontFamily: "'Playfair Display', serif" }}
-              className="text-4xl font-black text-gray-900 mt-3"
+              className="text-4xl md:text-5xl font-black text-gray-900 mt-3"
             >
               Meet Our Team
             </h2>

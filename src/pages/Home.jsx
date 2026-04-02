@@ -67,60 +67,41 @@ const perks = [
   "Full ownership of all deliverables",
 ];
 
-function StatCard(props) {
+function FeatureCard({ icon: IconComp, title, desc }) {
   return (
-    <div className="text-center">
-      <div
-        className="text-4xl font-black text-green-600"
-        style={{ fontFamily: "'Playfair Display', serif" }}
-      >
-        {props.value}
-      </div>
-      <div className="text-gray-500 text-sm mt-1 font-medium">
-        {props.label}
-      </div>
-    </div>
-  );
-}
-
-function FeatureCard(props) {
-  const IconComp = props.icon;
-  return (
-    <div className="bg-white rounded-2xl p-8 border border-green-100 hover:border-green-300 hover:shadow-lg hover:shadow-green-50 transition-all duration-300 group">
+    <div className="bg-white rounded-2xl p-8 border border-green-100 hover:border-green-300 hover:shadow-xl hover:shadow-green-50 transition-all duration-300 group flex flex-col">
       <div className="w-14 h-14 bg-green-100 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-green-500 transition-colors duration-300">
         <IconComp
           size={26}
           className="text-green-600 group-hover:text-white transition-colors duration-300"
         />
       </div>
-      <h3 className="text-xl font-bold text-gray-900 mb-3">{props.title}</h3>
-      <p className="text-gray-500 text-sm leading-relaxed">{props.desc}</p>
+      <h3 className="text-xl font-bold text-gray-900 mb-3">{title}</h3>
+      <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
     </div>
   );
 }
 
-function TestimonialCard(props) {
+function TestimonialCard({ name, role, text, rating, avatar }) {
   return (
-    <div className="bg-white rounded-2xl p-8 border border-green-100 shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-white rounded-2xl p-8 border border-green-100 shadow-sm hover:shadow-md transition-shadow flex flex-col">
       <div className="flex gap-1 mb-4">
-        {Array.from({ length: props.rating }).map(function (_, i) {
+        {Array.from({ length: rating }).map(function (_, i) {
           return <RiStarFill key={i} className="text-green-500" size={16} />;
         })}
       </div>
-      <p className="text-gray-600 text-sm leading-relaxed mb-6 italic">
-        "{props.text}"
+      <p className="text-gray-600 text-sm leading-relaxed mb-6 italic flex-1">
+        "{text}"
       </p>
       <div className="flex items-center gap-3">
         <img
-          src={props.avatar}
-          alt={props.name}
+          src={avatar}
+          alt={name}
           className="w-11 h-11 rounded-full object-cover border-2 border-green-100"
         />
         <div>
-          <div className="font-semibold text-gray-900 text-sm">
-            {props.name}
-          </div>
-          <div className="text-green-600 text-xs mt-0.5">{props.role}</div>
+          <div className="font-semibold text-gray-900 text-sm">{name}</div>
+          <div className="text-green-600 text-xs mt-0.5">{role}</div>
         </div>
       </div>
     </div>
@@ -130,21 +111,20 @@ function TestimonialCard(props) {
 export default function Home() {
   return (
     <div>
-      {/* Hero */}
-      <section className="relative bg-white overflow-hidden">
+      {/* Hero - 100vh */}
+      <section className="relative bg-white overflow-hidden min-h-screen flex items-center">
         <div className="absolute inset-0 bg-gradient-to-br from-green-50 via-white to-emerald-50 pointer-events-none" />
         <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
           <div className="w-full h-full bg-green-400 rounded-bl-full" />
         </div>
-
-        <div className="max-w-7xl mx-auto px-6 py-20 md:py-32 grid md:grid-cols-2 gap-12 items-center relative z-10">
+        <div className="max-w-7xl mx-auto px-6 py-20 md:py-0 w-full grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div>
             <span className="inline-flex items-center gap-2 bg-green-100 text-green-700 text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
               🌿 Professional Business Solutions
             </span>
             <h1
               style={{ fontFamily: "'Playfair Display', serif" }}
-              className="text-5xl md:text-6xl font-black leading-tight text-gray-900 mb-6"
+              className="text-5xl md:text-6xl lg:text-7xl font-black leading-tight text-gray-900 mb-6"
             >
               Grow Your <span className="text-green-500">Business</span> With
               Confidence
@@ -169,17 +149,15 @@ export default function Home() {
               </Link>
             </div>
           </div>
-
           <div className="relative hidden md:block">
             <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-green-100">
               <img
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=500&fit=crop"
+                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=700&h=600&fit=crop"
                 alt="Professional team at work"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-green-900/20 to-transparent" />
             </div>
-            {/* Floating card */}
             <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-5 border border-green-100">
               <div className="flex items-center gap-3">
                 <div className="w-12 h-12 bg-green-500 rounded-xl flex items-center justify-center">
@@ -199,19 +177,19 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Stats */}
+      {/* Stats - full width band */}
       <section className="bg-green-500 py-14 px-6">
         <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map(function (s) {
             return (
               <div key={s.label} className="text-center">
                 <div
-                  className="text-4xl font-black text-white"
+                  className="text-4xl md:text-5xl font-black text-white"
                   style={{ fontFamily: "'Playfair Display', serif" }}
                 >
                   {s.value}
                 </div>
-                <div className="text-green-100 text-sm mt-1 font-medium">
+                <div className="text-green-100 text-sm mt-2 font-medium">
                   {s.label}
                 </div>
               </div>
@@ -220,9 +198,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features */}
-      <section className="bg-gray-50 py-24 px-6">
-        <div className="max-w-6xl mx-auto">
+      {/* Features - 100vh */}
+      <section className="bg-gray-50 min-h-screen flex items-center px-6 py-20 md:py-0">
+        <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-14">
             <span className="text-green-600 text-xs font-bold tracking-widest uppercase">
               Why Us
@@ -253,16 +231,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* About Split Section */}
-      <section className="bg-white py-24 px-6">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+      {/* About Split - 100vh */}
+      <section className="bg-white min-h-screen flex items-center px-6 py-20 md:py-0">
+        <div className="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-16 items-center">
           <div className="relative">
             <img
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&h=500&fit=crop"
+              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=700&h=600&fit=crop"
               alt="Our workspace"
               className="rounded-3xl w-full object-cover shadow-xl shadow-green-100"
+              style={{ height: "520px" }}
             />
-            <div className="absolute -top-6 -right-6 bg-green-500 text-white rounded-2xl p-6 shadow-lg">
+            <div className="absolute -top-6 -right-6 bg-green-500 text-white rounded-2xl p-6 shadow-lg text-center">
               <div
                 className="text-3xl font-black"
                 style={{ fontFamily: "'Playfair Display', serif" }}
@@ -274,14 +253,13 @@ export default function Home() {
               </div>
             </div>
           </div>
-
           <div>
             <span className="text-green-600 text-xs font-bold tracking-widest uppercase">
               About Us
             </span>
             <h2
               style={{ fontFamily: "'Playfair Display', serif" }}
-              className="text-4xl font-black text-gray-900 mt-3 mb-5"
+              className="text-4xl md:text-5xl font-black text-gray-900 mt-3 mb-5"
             >
               We Build Digital Solutions That Work
             </h2>
@@ -315,9 +293,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="bg-gray-50 py-24 px-6">
-        <div className="max-w-6xl mx-auto">
+      {/* Testimonials - 100vh */}
+      <section className="bg-gray-50 min-h-screen flex items-center px-6 py-20 md:py-0">
+        <div className="max-w-6xl mx-auto w-full">
           <div className="text-center mb-14">
             <span className="text-green-600 text-xs font-bold tracking-widest uppercase">
               Testimonials
@@ -346,8 +324,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA Banner */}
-      <section className="relative bg-green-500 py-24 px-6 overflow-hidden">
+      {/* CTA - 100vh */}
+      <section className="relative bg-green-500 min-h-screen flex items-center justify-center px-6 overflow-hidden">
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full -translate-x-1/2 -translate-y-1/2" />
           <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full translate-x-1/2 translate-y-1/2" />
@@ -355,11 +333,11 @@ export default function Home() {
         <div className="max-w-3xl mx-auto text-center relative z-10">
           <h2
             style={{ fontFamily: "'Playfair Display', serif" }}
-            className="text-4xl md:text-5xl font-black text-white mb-5"
+            className="text-4xl md:text-6xl font-black text-white mb-6"
           >
             Ready to Get Started?
           </h2>
-          <p className="text-green-100 mb-10 text-lg max-w-xl mx-auto">
+          <p className="text-green-100 mb-10 text-lg max-w-xl mx-auto leading-relaxed">
             Let's build something amazing together. Reach out and we'll respond
             within 24 hours.
           </p>
