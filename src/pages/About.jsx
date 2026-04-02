@@ -37,39 +37,20 @@ const team = [
   },
 ];
 
-function TeamCard({ img, name, role, bio }) {
-  return (
-    <div className="bg-white rounded-2xl overflow-hidden border border-green-100 hover:shadow-xl hover:shadow-green-50 transition-all duration-300 group">
-      <div className="overflow-hidden">
-        <img
-          src={img}
-          alt={name}
-          className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-500"
-        />
-      </div>
-      <div className="p-6">
-        <div className="font-bold text-gray-900 text-lg">{name}</div>
-        <div className="text-green-600 text-sm font-medium mt-1 mb-3">
-          {role}
-        </div>
-        <p className="text-gray-500 text-sm leading-relaxed">{bio}</p>
-      </div>
-    </div>
-  );
-}
-
 export default function About() {
   return (
     <div>
-      {/* Hero - 100vh */}
-      <section className="relative bg-gradient-to-br from-green-50 via-white to-emerald-50 min-h-screen flex items-center px-6">
-        <div className="max-w-4xl mx-auto text-center w-full">
+      {/* Hero */}
+      <section className="relative bg-gradient-to-br from-green-50 via-white to-emerald-50 h-screen flex items-center justify-center px-6">
+        <div className="absolute top-0 right-0 w-80 h-80 bg-green-200 rounded-full opacity-20 translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 left-0 w-60 h-60 bg-emerald-200 rounded-full opacity-20 -translate-x-1/2 translate-y-1/2" />
+        <div className="max-w-4xl mx-auto text-center relative z-10">
           <span className="inline-block bg-green-100 text-green-700 text-xs font-bold tracking-widest uppercase px-4 py-2 rounded-full mb-6">
             About Us
           </span>
           <h1
             style={{ fontFamily: "'Playfair Display', serif" }}
-            className="text-5xl md:text-7xl font-black text-gray-900 mb-6"
+            className="text-5xl md:text-7xl font-black text-gray-900 mb-6 leading-tight"
           >
             We Are <span className="text-green-500">business-site</span>
           </h1>
@@ -80,20 +61,21 @@ export default function About() {
         </div>
       </section>
 
-      {/* Story - 100vh */}
-      <section className="bg-white min-h-screen flex items-center px-6 py-20 md:py-0">
+      {/* Story */}
+      <section className="bg-white h-screen flex items-center px-6">
         <div className="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-16 items-center">
           <div className="relative">
-            <img
-              src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&h=600&fit=crop"
-              alt="Our team collaborating"
-              className="rounded-3xl w-full object-cover shadow-xl shadow-green-100"
-              style={{ height: "520px" }}
-            />
-            <div className="absolute -bottom-6 -right-6 bg-green-500 text-white rounded-2xl p-6 shadow-lg text-center">
+            <div className="rounded-3xl overflow-hidden shadow-xl shadow-green-100 h-80 lg:h-96">
+              <img
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=700&h=500&fit=crop"
+                alt="Our team collaborating"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="absolute -bottom-5 -right-5 bg-green-500 text-white rounded-2xl p-5 shadow-lg text-center">
               <div
-                className="text-3xl font-black"
                 style={{ fontFamily: "'Playfair Display', serif" }}
+                className="text-3xl font-black"
               >
                 500+
               </div>
@@ -110,12 +92,12 @@ export default function About() {
             >
               Built on Passion, Driven by Results
             </h2>
-            <p className="text-gray-500 leading-relaxed mb-4">
+            <p className="text-gray-500 leading-relaxed mb-4 text-sm">
               Founded in 2012, business-site started as a small web agency with
               big ambitions. Over a decade, we've grown into a full-service
               digital company trusted by startups and enterprises alike.
             </p>
-            <p className="text-gray-500 leading-relaxed mb-8">
+            <p className="text-gray-500 leading-relaxed mb-8 text-sm">
               We believe every business deserves a powerful digital presence.
               Our mission is to make that possible — affordably, beautifully,
               and effectively.
@@ -130,10 +112,10 @@ export default function About() {
         </div>
       </section>
 
-      {/* Values - 100vh */}
-      <section className="bg-gray-50 min-h-screen flex items-center px-6 py-20 md:py-0">
+      {/* Values */}
+      <section className="bg-gray-50 h-screen flex items-center px-6">
         <div className="max-w-5xl mx-auto w-full">
-          <div className="text-center mb-14">
+          <div className="text-center mb-12">
             <span className="text-green-600 text-xs font-bold tracking-widest uppercase">
               What We Stand For
             </span>
@@ -149,15 +131,13 @@ export default function About() {
               return (
                 <div
                   key={v}
-                  className="flex items-start gap-4 bg-white rounded-xl p-6 border border-green-100 hover:border-green-300 transition-colors"
+                  className="flex items-center gap-4 bg-white rounded-xl p-5 border border-green-100 hover:border-green-300 transition-colors"
                 >
                   <RiCheckboxCircleLine
                     size={22}
-                    className="text-green-500 flex-shrink-0 mt-0.5"
+                    className="text-green-500 flex-shrink-0"
                   />
-                  <span className="text-gray-700 text-sm font-medium leading-relaxed">
-                    {v}
-                  </span>
+                  <span className="text-gray-700 text-sm font-medium">{v}</span>
                 </div>
               );
             })}
@@ -165,10 +145,10 @@ export default function About() {
         </div>
       </section>
 
-      {/* Team - 100vh */}
-      <section className="bg-white min-h-screen flex items-center px-6 py-20 md:py-0">
+      {/* Team */}
+      <section className="bg-white h-screen flex items-center px-6">
         <div className="max-w-6xl mx-auto w-full">
-          <div className="text-center mb-14">
+          <div className="text-center mb-12">
             <span className="text-green-600 text-xs font-bold tracking-widest uppercase">
               The People
             </span>
@@ -179,16 +159,30 @@ export default function About() {
               Meet Our Team
             </h2>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {team.map(function (m) {
               return (
-                <TeamCard
+                <div
                   key={m.name}
-                  img={m.img}
-                  name={m.name}
-                  role={m.role}
-                  bio={m.bio}
-                />
+                  className="bg-white rounded-2xl overflow-hidden border border-green-100 hover:shadow-xl hover:shadow-green-50 transition-all duration-300 group"
+                >
+                  <div className="overflow-hidden h-48">
+                    <img
+                      src={m.img}
+                      alt={m.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  </div>
+                  <div className="p-5">
+                    <div className="font-bold text-gray-900">{m.name}</div>
+                    <div className="text-green-600 text-sm font-medium mt-1 mb-2">
+                      {m.role}
+                    </div>
+                    <p className="text-gray-500 text-xs leading-relaxed">
+                      {m.bio}
+                    </p>
+                  </div>
+                </div>
               );
             })}
           </div>
