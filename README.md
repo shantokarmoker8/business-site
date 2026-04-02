@@ -137,7 +137,7 @@ This project was built as part of the **freeCodeCamp Front End Development Libra
 
 🎓 **Certificate:** [View Certificate](https://www.freecodecamp.org/certification/shantokarmoker8/front-end-development-libraries)
 
-This project is open source and available under the [MIT License](LICENSE).
+
 
 ---
 
