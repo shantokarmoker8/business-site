@@ -129,7 +129,13 @@ npm run preview
 
 ---
 
-## 📝 License
+## 🏅 License & Certification
+
+This project was built as part of the **freeCodeCamp Front End Development Libraries** certification.
+
+[![freeCodeCamp Certification](https://img.shields.io/badge/freeCodeCamp-Front%20End%20Development%20Libraries-0a0a23?style=for-the-badge&logo=freecodecamp&logoColor=white)](https://www.freecodecamp.org/certification/shantokarmoker8/front-end-development-libraries)
+
+🎓 **Certificate:** [View Certificate](https://www.freecodecamp.org/certification/shantokarmoker8/front-end-development-libraries)
 
 This project is open source and available under the [MIT License](LICENSE).
 
