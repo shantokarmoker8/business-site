@@ -79,38 +79,38 @@ business-site/
 ### Prerequisites
 
 - Node.js **v18+**
-- npm বা yarn
+- npm or yarn
 
 ### Installation
 
 ```bash
-# Repository clone করো
+# Clone the repository
 git clone https://github.com/shantokarmoker8/business-site.git
 
-# Project folder এ যাও
+# Navigate to the project folder
 cd business-site
 
-# Dependencies install করো
+# Install dependencies
 npm install
 
-# Dev server চালু করো
+# Start the development server
 npm run dev
 ```
 
-Browser এ open করো → [http://localhost:5173](http://localhost:5173)
+Open your browser and go to → [http://localhost:5173](http://localhost:5173)
 
 ---
 
 ## 📦 Available Scripts
 
 ```bash
-# Development server start
+# Start development server
 npm run dev
 
-# Production build
+# Build for production
 npm run build
 
-# Build preview
+# Preview production build
 npm run preview
 ```
 
