@@ -3,14 +3,14 @@ import { RiArrowLeftLine, RiLeafLine } from "react-icons/ri";
 
 export default function NotFound() {
   return (
-    <section className="bg-gradient-to-br from-green-50 via-white to-emerald-50 flex items-center justify-center min-h-[75vh] px-6">
+    <section className="bg-gradient-to-br from-green-50 via-white to-emerald-50 min-h-screen flex items-center justify-center px-6">
       <div className="text-center">
         <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-8">
           <RiLeafLine size={44} className="text-green-500" />
         </div>
         <div
           style={{ fontFamily: "'Playfair Display', serif" }}
-          className="text-8xl font-black text-green-500 mb-4"
+          className="text-9xl font-black text-green-500 mb-4"
         >
           404
         </div>
